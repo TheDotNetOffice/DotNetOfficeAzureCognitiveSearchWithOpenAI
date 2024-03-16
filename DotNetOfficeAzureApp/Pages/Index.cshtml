@@ -1,0 +1,57 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+
+    <div class="col-md-6 mb-3 mt-3 border-light">
+        <div class="col-md-6 mb-3 mt-3" style="border: 1px solid blue;">
+            <form method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label">Upload File</label>
+                    <input type="file" name="file" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </form>
+        </div>
+
+        <h6 style="color:red">List of Files:</h6>
+        <p>
+            <table style="border:1px solid #dddddd">
+                <tr>
+                    <th style="color:blue; background-color: #dddddd;">File Name</th>
+                    <th style="color:blue; background-color: #dddddd;">Action</th>
+                </tr>
+
+
+                @foreach (string item in Model.blobFileNames)
+                {
+                    <tr>
+                        <td> <a href="" onclick="window.open('https://dotnetofficestorageacc.blob.core.windows.net/files/@item')">@item</a></td>
+                        <td>
+                            <form method="post" asp-page-handler="Delete">
+                                <input type="hidden" name="blobName" value=@item />
+                                <button type="submit" class="btn btn-primary" style="color:blue;">Delete</button>
+                            </form>
+
+                        </td>
+                    </tr>
+
+
+                }
+            </table>
+        </p>
+    </div>
+</body>
+</html>

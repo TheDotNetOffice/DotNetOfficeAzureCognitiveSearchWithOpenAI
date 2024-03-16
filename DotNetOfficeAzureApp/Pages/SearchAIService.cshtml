@@ -1,0 +1,84 @@
+﻿@page
+@model SearchAIService
+@{
+    ViewData["Title"] = "Search information";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .chat-messages {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-height: 100px
+        }
+
+        .message-box {
+            display: flex;
+            align-items: center;
+        }
+
+            .message-box textarea {
+                flex: 1;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                resize: none;
+                margin-right: 10px;
+                height: 40px;
+            }
+
+            .message-box button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: #007bff;
+                color: #fff;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-messages">
+            @Model.Output
+        </div>
+        <form method="post" id="chat-form">
+            <div class="message-box">
+                <input type="text" name="Searchinput" id="Searchinputtxt" class="form-control" placeholder="Type your message...">
+
+                <button id="send-button" type="submit">Send</button>
+            </div>
+        </form>
+    </div> 
+
+</body>
+</html>
+
+
+
